@@ -72,6 +72,8 @@ last_updated: 2025-03-20 15:49
 ## Best Path Equals Longest Match
 - what is meant by 'the longest match' 
 	- router examines the *destination IP* of a packet 
+	- if the destination IP matches multiple routing entries, destination IP and routing entry are compared against in binary 
+		- whichever entry matches the most with the destination IP is the 'longest match' and is selected
 	- whatever path is most specific 
 - this would be considered the best path from the packets perspective
 
@@ -87,9 +89,9 @@ destination IP in binary: 10101100.00010000.00000000.00001010
 
 | Index | Routing Entry | Address in Binary                       |
 | ----- | ------------- | --------------------------------------- |
-| 1     | 172.16.0.0/12 | ==10101100.0001==0000.00000000.00000000 |
-| 2     | 172.16.0.0/18 | ==10101100.00010000.00==000000.00000000 |
-| 3     | 172.16.0.0/26 | ==10101100.00010000.00000000.00==000000 |
+| 1     | 172.16.0.0/12 | **10101100.0001**0000.00000000.00000000 |
+| 2     | 172.16.0.0/18 | **10101100.00010000.00**000000.00000000 |
+| 3     | 172.16.0.0/26 | **10101100.00010000.00000000.00**000000 |
 - although all routing entries match, the 3rd one has the *longest* match in binary
 	- it is the most specific
 
